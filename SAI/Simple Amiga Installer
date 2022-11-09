@@ -1,0 +1,614 @@
+; $VER: Simple Amiga Installation 40.1 (7.11.122)
+
+(complete 0)
+
+;=============================================================================
+; English strings
+
+(if (= @language "english")
+(
+
+(set #choice-prompt
+(cat "\nSelect desired action:"
+))
+
+(set #choice-help
+(cat "SAI attempts to guess whether you want to install "
+     "a fresh Workbench or expand an existing installation."
+     "\n\nIf the guess is wrong, you can correct it here."
+))
+
+(set #choice-init
+(cat "Install new Workbench"
+))
+
+(set #choice-exp
+(cat "Expand existing Workbench"
+))
+
+(set #which-disk
+(cat "In which partition should Workbench 3.1 be installed?"
+))
+
+(set #which-disk-help
+(cat "\nThis section lets you choose on which hard drive partition the "
+     "Workbench 3.1 files will be installed.\n\n"
+     @askdir-help
+))
+
+(set #format-request
+(cat "OK to format volume %s?\n\nWARNING!\n\nAll data will be lost!"
+))
+
+(set #format-warning
+(cat "WARNING!\n\nDo you really wish to format the disk in device %s "
+     "and lose all its data?"
+))
+
+(set #format-name
+(cat "Please confirm the name that %s should be given."
+))
+
+(set #format-help
+(cat "You are asked to confirm that %s can be formatted and "
+     "overwritten with a new Workbench installation."
+))
+
+))
+
+
+;=============================================================================
+; German strings
+
+(if (= @language "deutsch")
+(
+
+(set #choice-prompt
+(cat "\nWählen Sie die gewünschte Aktion:"
+))
+
+(set #choice-help
+(cat "SAI versucht zu erraten, ob Sie eine neue Workbench "
+     "installieren oder eine vorhandene Installation erweitern "
+     "wollen."
+     "\n\nWenn SAI falsch geraten hat, können Sie das hier "
+     "korrigieren."
+))
+
+(set #choice-init
+(cat "Workbench neu installieren"
+))
+
+(set #choice-exp
+(cat "Workbench erweitern"
+))
+
+(set #which-disk
+(cat "Auf welcher Partition soll Workbench 3.1 installiert werden?"
+))
+
+(set #which-disk-help
+(cat "\nHier können Sie wählen, auf welcher Festplattenpartition "
+     "die Dateien von Workbench 3.1 installiert werden sollen.\n\n"
+     @askdir-help
+))
+
+(set #format-request
+(cat "OK zum Formatieren von Datenträger %s?\n\nACHTUNG!\n\n"
+     "Alle Daten gehen dabei verloren!"
+))
+
+(set #format-warning
+(cat "ACHTUNG!\n\nWollen Sie wirklich die Disk in Laufwerk %s "
+     "formatieren und alle Daten auf ihr verlieren?"
+))
+
+(set #format-name
+(cat "Bitte bestätigen Sie den Namen, den %s erhalten soll."
+))
+
+(set #format-help
+(cat "Sie sollen bestätigen dass %s formatiert und mit "
+     "einer neuen Workbench-Installation überschrieben werden "
+     "kann."
+))
+
+))
+
+
+;=============================================================================
+; Portuguese strings
+
+(if (= @language "português")
+(
+
+(set #choice-prompt
+(cat "\nSelecione a ação desejada:"
+))
+
+(set #choice-help
+(cat "SAI tenta adivinhar se você deseja instalar um Workbench "
+     "novo ou expandir um produto existente."
+     "\n\nSe o palpite estiver errado, você pode corrigi-lo aqui."
+))
+
+(set #choice-init
+(cat "Instalar Workbench novo"
+))
+
+(set #choice-exp
+(cat "Expandir um Workbench existente"
+))
+
+(set #which-disk
+(cat "Em que disco ou gaveta se vai instalar o Workbench 3.1?"
+))
+
+(set #which-disk-help
+(cat "\nEsta secção permite-lhe escolher em que gaveta ou disco os "
+     "ficheiros do Workbench 3.1 serão instalados.\n\n"
+     @askdir-help
+))
+
+(set #format-request
+(cat "Posso formatar o volume Workbench?\n\nAVISO!\n\n"
+     "Todos os dados serão perdidos!"
+))
+
+(set #format-warning
+(cat "AVISO!\n\nTem a certeza de que quer realmente formatar a "
+     "diskette na drive %s e perder todos os seus dados?"
+))
+
+(set #format-name
+(cat "Por favor, confirme o nome que %s deve ser dado."
+))
+
+(set #format-help
+(cat "Você é solicitado a confirmar se o %s pode ser "
+     "formatado e substituido por uma nova instalação do "
+     "Workbench."
+))
+
+))
+
+
+;=============================================================================
+; Spanish strings
+
+(if (= @language "español")
+(
+
+(set #choice-prompt
+(cat "\nSeleccione la acción deseada:"
+))
+
+(set #choice-help
+(cat "SAI intenta adivinar si desea instalar un Workbench nuevo o "
+     "expandir un Workbench existente."
+     "\n\nSi la conjetura es incorrecta, puede corregirla aquí."
+))
+
+(set #choice-init
+(cat "Instalar Workbench nuevo"
+))
+
+(set #choice-exp
+(cat "Expandir un Workbench existente"
+))
+
+(set #which-disk
+(cat "¿En qué unidad o directorio quiere instalar el Workbench 3.1?"
+))
+
+(set #which-disk-help
+(cat "\nEsta sección le permite elegir en qué unidad o directorio quiere "
+     "instalar los ficheros del Workbench 3.1.\n\n"
+     @askdir-help
+))
+
+(set #format-request
+(cat "¿Formatear volumen %s?\n\n¡ATENCION!\n\n"
+     "¡Se perderán todos los datos!"
+))
+
+(set #format-warning
+(cat "¡ATENCION!\n\n¿Quiere formatear el disco de la unidad %s "
+     "y perder todos sus datos?"
+))
+
+(set #format-name
+(cat "Confirme el nombre que se debe dar a %s."
+))
+
+(set #format-help
+(cat "Se le pide que confirme que %s se puede formatear "
+     "y sobrescribir con una nueva instalación de Workbench."
+))
+
+))
+
+
+;=============================================================================
+; French strings
+
+(if (= @language "français")
+(
+
+(set #choice-prompt
+(cat "\nSélectionner l'action désirée:"
+))
+
+(set #choice-help
+(cat "SAI essaie de deviner si vous voulez installer un "
+     "nouveau Workbench ou développer un Workbench existant."
+     "\n\nSi la supposition est fausse, vous pouvez la corriger ici."
+))
+
+(set #choice-init
+(cat "Installer un nouveau Workbench"
+))
+
+(set #choice-exp
+(cat "Développer un Workbench existant"
+))
+
+(set #which-disk
+(cat "Dans quelle partition faut-il installer le Workbench 3.1 ?"
+))
+
+(set #which-disk-help
+(cat "\nCette partie vous permet de choisir la partition dans laquelle les "
+     "fichiers du Workbench 3.1 seront installés.\n\n"
+     @askdir-help
+))
+
+(set #format-request
+(cat "OK pour formater le volume %s?\n\nATTENTION!\n\n"
+     "Toutes les données seront effacées!"
+))
+
+(set #format-warning
+(cat "ATTENTION!\n\nVoulez-vous vraiment formater le disque "
+     "dans l'unité %s et perdre toutes ses données?"
+))
+
+(set #format-name
+(cat "Veuillez confirmer le nom à donner à %s."
+))
+
+(set #format-help
+(cat "Vous êtes invité à confirmer que %s peut être "
+     "formaté et remplacé par une nouvelle installation de "
+     "Workbench."
+))
+
+))
+
+
+;=============================================================================
+; Dutch strings
+
+(if (= @language "nederlands")
+(
+
+(set #choice-prompt
+(cat "\nSelecteer gewenste actie:"
+))
+
+(set #choice-help
+(cat "SAI probeert te raden of u een nieuw Workbench wilt "
+     "installeren of een bestaand Workbench wilt uitbreiden."
+     "\n\nAls de gissing onjuist is, kunt u deze hier corrigeren."
+))
+
+(set #choice-init
+(cat "Nieuw Workbench installeren"
+))
+
+(set #choice-exp
+(cat "Bestaand Workbench uitbreiden"
+))
+
+(set #which-disk
+(cat "Op welke partitie moet Workbench 3.1 geïnstalleerd worden?"
+))
+
+(set #which-disk-help
+(cat "\nDit gedeelte stelt u in staat te kiezen op welke partitie de "
+     "Workbench 3.1 bestanden geïnstalleerd moeten worden.\n\n"
+     @askdir-help
+))
+
+(set #format-request
+(cat "OK om volume %s te formatteren?\n\nWAARSCHUWING!\n\n"
+     "Alle gegevens gaan verloren!"
+))
+
+(set #format-warning
+(cat "WAARSCHUWING!\n\nWilt u echt de disk in eenheid %s "
+     "formatteren en daarmee alle gegevens kwijtraken?"
+))
+
+(set #format-name
+(cat "Bevestig de naam die %s moet worden gegeven."
+))
+
+(set #format-help
+(cat "U wordt gevraagd te bevestigen dat %s kan worden "
+     "geformatteerd en overschreven met een nieuwe Workbench "
+     "installatie."
+))
+
+))
+
+
+;=============================================================================
+; Italian strings
+
+(if (= @language "italiano")
+(
+
+(set #choice-prompt
+(cat "\nSeleziona l'azione desiderata:"
+))
+
+(set #choice-help
+(cat "Tenta SAI indovinare se si desidera installare un nuovo "
+     "Workbench o espandere un Workbench esistente."
+     "\n\nSe l'ipotesi è sbagliata, puoi correggerla qui."
+))
+
+(set #choice-init
+(cat "Installa un nuovo Workbench"
+))
+
+(set #choice-exp
+(cat "Espandere un Workbench esistente"
+))
+
+(set #which-disk
+(cat "In quale partizione deve essere installata la Workbench 3.1?"
+))
+
+(set #which-disk-help
+(cat "\nQuesta sezione vi permette di scegliere in quale partizione devono "
+     "essere installati i file del Workbench 3.1.\n\n"
+     @askdir-help
+))
+
+(set #format-request
+(cat "OK per formattare il disco %s?\n\nATTENZIONE!\n\n"
+     "Tutti i dati saranno cancellati!"
+))
+
+(set #format-warning
+(cat "ATTENZIONE!\n\nSi vuole realmente formattare il disco "
+     "nel dispositivo %s e perdere tutti i dati?"
+))
+
+(set #format-name
+(cat "Si prega di confermare il nome che deve essere assegnato a %s."
+))
+
+(set #format-help
+(cat "Viene chiesto di confermare che %s può essere "
+     "formattato e sovrascritto con una nuova installazione "
+     "di Workbench."
+))
+
+))
+
+
+;=============================================================================
+; Danish strings
+
+(if (= @language "dansk")
+(
+
+(set #choice-prompt
+(cat "\nVælg ønsket handling:"
+))
+
+(set #choice-help
+(cat "SAI forsøger at gætte, om du vil installere et nyt "
+     "Workbench eller udvide et eksisterende Workbench."
+     "\n\nHvis gættet er forkert, kan du rette det her."
+))
+
+(set #choice-init
+(cat "Installere et nyt Workbench"
+))
+
+(set #choice-exp
+(cat "Udvide et eksisterende Workbench"
+))
+
+(set #which-disk
+(cat "På hvilken disk ønsker De at installere Workbench 3.1 ?"
+))
+
+(set #which-disk-help
+(cat "\nHer skal De vælge i hvilken disk Workbench 3.1 "
+     "filerne skal installeres.\n\n"
+     @askdir-help
+))
+
+(set #format-request
+(cat "Er det OK at formatere volume %s?\n\nADVARSEL!\n\n"
+     "Alle data vil gâ tabt!"
+))
+
+(set #format-warning
+(cat "ADVARSEL!\n\nØnsker De virkelig at formatere disken "
+     "i enhed %s og miste alle data?"
+))
+
+(set #format-name
+(cat "Bekræft venligst det navn, som %s skal gives."
+))
+
+(set #format-help
+(cat "Du bliver bedt om at bekræfte, at %s kan formateres "
+     "og overskrives med en ny Workbench installation."
+))
+
+))
+
+
+;=============================================================================
+; Swedish strings
+
+(if (= @language "svenska")
+(
+
+(set #choice-prompt
+(cat "\nVälj önskad åtgärd:"
+))
+
+(set #choice-help
+(cat "SAI försöker gissa om du vill installera en ny Workbench "
+     "eller utöka en befintlig Workbench."
+     "\n\nOm gissningen är fel kan du rätta den här."
+))
+
+(set #choice-init
+(cat "Installera en ny Workbench"
+))
+
+(set #choice-exp
+(cat "Utöka en befintlig Workbench"
+))
+
+(set #which-disk
+(cat "På vilken enhet eller i vilken låda skall Workbench 3.1 installeras?"
+))
+
+(set #which-disk-help
+(cat "\nHär kan du välja vilken enhet (eller låda) filerna för Workbench 3.1 "
+     "skall installeras på.\n\n"
+     @askdir-help
+))
+
+(set #format-request
+(cat "OK att formattera volym %s?\n\nVARNING!\n\n"
+     "All data kommer att försvinna!"
+))
+
+(set #format-warning
+(cat "VARNING!\n\nVill du verkeligen formattera disken i "
+     "enhet %s och förlora alla data?"
+))
+
+(set #format-name
+(cat "Vänligen bekräfta namnet som %s ska ges."
+))
+
+(set #format-help
+(cat "Du uppmanas att bekräfta att %s kan formateras "
+     "och skrivas över med en ny Workbench installation."
+))
+
+))
+
+
+;=============================================================================
+; Norwegian strings
+
+(if (= @language "norsk")
+(
+
+(set #choice-prompt
+(cat "\nVelg ønsket handling:"
+))
+
+(set #choice-help
+(cat "SAI prøver å gjette om du ønsker å installere et nytt "
+     "Workbench eller utvide et eksisterende Workbench."
+     "\n\nHvis gjetningen er feil, kan du rette den her."
+))
+
+(set #choice-init
+(cat "Installere et nytt Workbench"
+))
+
+(set #choice-exp
+(cat "Utvide et eksisterende Workbench"
+))
+
+(set #which-disk
+(cat "På hvilken partisjon ønsker du å installere Workbench 3.1 ?"
+))
+
+(set #which-disk-help
+(cat "Her skal du velge hvilken partisjon filene til Workbench 3.1 skal "
+     "installeres på.\n\n"
+     @askdir-help
+))
+
+(set #format-request
+(cat "OK å formatere disk %s?\n\nADVARSEL!\n\nAlle data vil gå tapt!"
+))
+
+(set #format-warning
+(cat "ADVARSEL!\n\nØnsker du virkelig å formatere disken i "
+     "enhet %s og miste alle dens data?"
+))
+
+(set #format-name
+(cat "Vennligst bekreft navnet som %s skal gis."
+))
+
+(set #format-help
+(cat "Du blir bedt om å bekrefte at %s kan formateres "
+     "og overskrives med en ny Workbench installasjon."
+))
+
+))
+
+
+;=============================================================================
+
+(welcome "\nSimple Amiga Installation")
+
+(set #choice-default (if (exists "SYS:Installer") 0 1))
+
+(set #selected-level @user-level)
+
+(set #choice
+    (askchoice (prompt #choice-prompt)
+        (help #choice-help)
+        (choices #choice-init #choice-exp)
+        (default #choice-default)
+    )
+)
+
+(if (= #choice 0)
+(
+    (set #disk
+        (askdir (prompt #which-disk)
+                (help #which-disk-help)
+                (default "DH0:")
+                (disk)
+        )
+    )
+
+    (set #volume (expandpath #disk))
+
+    (set @default-dest
+        (askstring (prompt (#format-name #disk))
+                   (help @askstring-help)
+                   (default "Workbench")
+        )
+    )
+
+    (user 2)
+    (run ("SYS:System/Format DRIVE %s NAME %s FFS INTL NODIRCACHE NOICONS QUICK" #disk @default-dest)
+         (prompt (#format-request #disk))
+         (help (#format-help #disk))
+         (confirm)
+    )
+    (user #selected-level)
+
+    (run (cat "contrib/Installer SCRIPT \"Initial Installation\" APPNAME \"Workbench 3.1\" DEVUSER NOVICE NOLOG LANGUAGE " @language))
+))
