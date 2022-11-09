@@ -40,11 +40,6 @@
 (cat "OK to format volume %s?\n\nWARNING!\n\nAll data will be lost!"
 ))
 
-(set #format-warning
-(cat "WARNING!\n\nDo you really wish to format the disk in device %s "
-     "and lose all its data?"
-))
-
 (set #format-name
 (cat "Please confirm the name that %s should be given."
 ))
@@ -96,11 +91,6 @@
 (set #format-request
 (cat "OK zum Formatieren von Datenträger %s?\n\nACHTUNG!\n\n"
      "Alle Daten gehen dabei verloren!"
-))
-
-(set #format-warning
-(cat "ACHTUNG!\n\nWollen Sie wirklich die Disk in Laufwerk %s "
-     "formatieren und alle Daten auf ihr verlieren?"
 ))
 
 (set #format-name
@@ -155,11 +145,6 @@
      "Todos os dados serão perdidos!"
 ))
 
-(set #format-warning
-(cat "AVISO!\n\nTem a certeza de que quer realmente formatar a "
-     "diskette na drive %s e perder todos os seus dados?"
-))
-
 (set #format-name
 (cat "Por favor, confirme o nome que %s deve ser dado."
 ))
@@ -212,11 +197,6 @@
      "¡Se perderán todos los datos!"
 ))
 
-(set #format-warning
-(cat "¡ATENCION!\n\n¿Quiere formatear el disco de la unidad %s "
-     "y perder todos sus datos?"
-))
-
 (set #format-name
 (cat "Confirme el nombre que se debe dar a %s."
 ))
@@ -266,11 +246,6 @@
 (set #format-request
 (cat "OK pour formater le volume %s?\n\nATTENTION!\n\n"
      "Toutes les données seront effacées!"
-))
-
-(set #format-warning
-(cat "ATTENTION!\n\nVoulez-vous vraiment formater le disque "
-     "dans l'unité %s et perdre toutes ses données?"
 ))
 
 (set #format-name
@@ -325,11 +300,6 @@
      "Alle gegevens gaan verloren!"
 ))
 
-(set #format-warning
-(cat "WAARSCHUWING!\n\nWilt u echt de disk in eenheid %s "
-     "formatteren en daarmee alle gegevens kwijtraken?"
-))
-
 (set #format-name
 (cat "Bevestig de naam die %s moet worden gegeven."
 ))
@@ -380,11 +350,6 @@
 (set #format-request
 (cat "OK per formattare il disco %s?\n\nATTENZIONE!\n\n"
      "Tutti i dati saranno cancellati!"
-))
-
-(set #format-warning
-(cat "ATTENZIONE!\n\nSi vuole realmente formattare il disco "
-     "nel dispositivo %s e perdere tutti i dati?"
 ))
 
 (set #format-name
@@ -439,11 +404,6 @@
      "Alle data vil gâ tabt!"
 ))
 
-(set #format-warning
-(cat "ADVARSEL!\n\nØnsker De virkelig at formatere disken "
-     "i enhed %s og miste alle data?"
-))
-
 (set #format-name
 (cat "Bekræft venligst det navn, som %s skal gives."
 ))
@@ -495,11 +455,6 @@
      "All data kommer att försvinna!"
 ))
 
-(set #format-warning
-(cat "VARNING!\n\nVill du verkeligen formattera disken i "
-     "enhet %s och förlora alla data?"
-))
-
 (set #format-name
 (cat "Vänligen bekräfta namnet som %s ska ges."
 ))
@@ -548,11 +503,6 @@
 
 (set #format-request
 (cat "OK å formatere disk %s?\n\nADVARSEL!\n\nAlle data vil gå tapt!"
-))
-
-(set #format-warning
-(cat "ADVARSEL!\n\nØnsker du virkelig å formatere disken i "
-     "enhet %s og miste alle dens data?"
 ))
 
 (set #format-name
@@ -610,5 +560,7 @@
     )
     (user #selected-level)
 
-    (run (cat "contrib/Installer SCRIPT \"Initial Installation\" APPNAME \"Workbench 3.1\" DEVUSER NOVICE NOLOG LANGUAGE " @language))
+    (textfile (dest "ENV:SAITargetDisk") (append #disk))
+    (run "contrib/patch -o \"Initial Installation\" Install3.1:Install/Install \"Initial Installation.patch\"")
+    (run (cat "contrib/Installer SCRIPT \"Initial Installation\" APPNAME \"Workbench 3.1\" DEFUSER " (select #selected-level "NOVICE" "AVERAGE" "EXPERT") " NOLOG LANGUAGE " @language))
 ))
