@@ -1,4 +1,4 @@
-; $VER: Simple Amiga Installation 40.1 (7.11.122)
+; $VER: Simple Amiga Installer 40.1 (7.11.122)
 
 (complete 0)
 
@@ -519,7 +519,7 @@
 
 ;=============================================================================
 
-(welcome "\nSimple Amiga Installation")
+(welcome "\nSimple Amiga Installer")
 
 (set #choice-default (if (exists "SYS:Installer") 0 1))
 
@@ -562,5 +562,5 @@
 
     (textfile (dest "ENV:SAITargetDisk") (append #disk))
     (run "contrib/patch -o \"Initial Installation\" Install3.1:Install/Install \"Initial Installation.patch\"")
-    (run (cat "contrib/Installer SCRIPT \"Initial Installation\" APPNAME \"Workbench 3.1\" DEFUSER " (select #selected-level "NOVICE" "AVERAGE" "EXPERT") " NOLOG LANGUAGE " @language))
+    (run (cat "contrib/Installer SCRIPT \"Initial Installation\" APPNAME \"Workbench 3.1\" MINUSER " (select #selected-level "NOVICE" "AVERAGE" "EXPERT") " NOLOG LANGUAGE " @language))
 ))

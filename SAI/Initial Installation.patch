@@ -6,30 +6,35 @@
 <      "linguagens que estão á sua disposição num disco rígido com a Versão 3.1 "     "já instalada."
 ---
 >      "linguagens que estão á sua disposição num disco rígido com a Versão 3.1 "
-3357c3357
+3346,3347c3346
+< (set sourcePath (expandpath (pathonly @icon)))
+< (set sourcePath (pathonly (pathonly sourcePath)))
+---
+> (set sourcePath (tackon (expandpath (pathonly @icon)) "Disks"))
+3357c3356
 < 		(if (exists (tackon installPath "Storage"))
 ---
 > 		(if (exists (tackon installPath "Storage3.1"))
-3364c3364
+3364c3363
 < 		    (set storagePath    (tackon installPath   "Storage"))
 ---
 > 		    (set storagePath    (tackon installPath   "Storage3.1"))
-3389c3389
+3389c3388
 <     (if (exists "Install3.1:Storage")
 ---
 >     (if (exists "Install3.1:Storage3.1")
-3396c3396
+3396c3395
 < 	(set storagePath    (tackon installPath   "Storage"))
 ---
 > 	(set storagePath    (tackon installPath   "Storage3.1"))
-3415,3418c3415
+3415,3418c3414
 < (run (cat (tackon installPath "C") "/GuessBootDev >ENV:BootDev Install3.1:") (safe))
 < (set old_wb (getenv "BootDev"))
 < (set old_wb (substr old_wb 0 (- (strlen old_wb) 1)))
 < (set old_wb (expandpath old_wb))
 ---
 > (set old_wb (getenv "SAITargetDisk"))
-3427,3431c3424
+3427,3431c3423
 < (if (askbool (prompt #ask-function)
 < 	     (help #ask-function-help)
 < 	     (choices #ask-function-1 #ask-function-2)
@@ -37,15 +42,15 @@
 <     )
 ---
 > (if 1
-3488c3481
+3488c3480
 < 		      (default default_lang)
 ---
 > 		      (default (bitor default_lang 4))
-4295a4289,4291
+4295a4288,4290
 > (copyfiles (source (tackon installPath "C/IconPos"))
 >            (dest (tackon target "C"))
 > )
-4512a4509,4523
+4512a4508,4522
 > ;=============================================================================
 > ; Let's have a look for an 060...
 > 
@@ -61,7 +66,7 @@
 >     )
 > ))
 > 
-4553c4564
+4553c4563
 < 		      (default default_lang)
 ---
 > 		      (default (bitor default_lang 4))
