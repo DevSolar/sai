@@ -521,20 +521,18 @@
 
 (welcome "\nSimple Amiga Installer")
 
-(set #choice-default (if (exists "SYS:Installer") 0 1))
-
 (set #selected-level @user-level)
 
-(set #choice
-    (askchoice (prompt #choice-prompt)
-        (help #choice-help)
-        (choices #choice-init #choice-exp)
-        (default #choice-default)
-    )
-)
-
-(if (= #choice 0)
+(if (= 0 (askchoice (prompt #choice-prompt)
+             (help #choice-help)
+             (choices #choice-init #choice-exp)
+             (default (if (exists "SYS:Installer") 0 1))
+         ))
 (
+    ;======================
+    ; Initial Installation
+    ;======================
+
     (set #disk
         (askdir (prompt #which-disk)
                 (help #which-disk-help)
@@ -542,8 +540,6 @@
                 (disk)
         )
     )
-
-    (set #volume (expandpath #disk))
 
     (set @default-dest
         (askstring (prompt (#format-name #disk))
@@ -563,4 +559,9 @@
     (textfile (dest "ENV:SAITargetDisk") (append #disk))
     (run "contrib/patch -o \"Initial Installation\" Install3.1:Install/Install \"Initial Installation.patch\"")
     (run (cat "contrib/Installer SCRIPT \"Initial Installation\" APPNAME \"Workbench 3.1\" MINUSER " (select #selected-level "NOVICE" "AVERAGE" "EXPERT") " NOLOG LANGUAGE " @language))
+)
+(
+    ;======================
+    ; Workbench Extensions
+    ;======================
 ))
