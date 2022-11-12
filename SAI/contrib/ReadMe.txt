@@ -7,4 +7,5 @@ These tools have been taken from the following Aminet archives:
 
 comm/tcp/GetClient14.lha
 dev/misc/patch-2.1.lha
+util/arc/lha.run
 util/misc/Installer-43_3.lha

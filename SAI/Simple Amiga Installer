@@ -564,4 +564,52 @@
     ;======================
     ; Workbench Extensions
     ;======================
+
+    (procedure p_startup #section #commands
+    (
+        ; The builtin command (startup ...) should be doing this, but
+        ; it insists on a prompt and does not write newlines after each
+        ; block it inserts.
+        (set #user-startup "SYS:S/User-Startup")
+        (if (= 0 (exists #user-startup))
+            (textfile (dest #user-startup) (append "; Put your configuration here\n"))
+        )
+        (textfile (dest #user-startup)
+            (include #user-startup)
+            (append ("\n;BEGIN %s\n%s\n;END %s\n" #section #commands #section))
+        )
+    ))
+
+    (procedure p_amiget #archive
+        (if (= 0 (exists (tackon "Archives" #archive)))
+            (run ("contrib/GetClient DOPASV LOCALDIR Archives ftp.aminet.net/%s" #archive))
+        )
+    )
+
+
+    (set @default-dest (expandpath "SYS:"))
+    (set #cpu (database "cpu"))
+
+    (set #startup-commands "AddDataTypes Devs:Datatypes/~(#?.info)")
+
+    (if (<> 2 (exists "Apps:" (noreq)))
+    (
+        (makedir (tackon @default-dest "Apps") (infos))
+        (run "IconPos >NIL: \"SYS:Apps\" 356 4")
+        (run "IconPos >NIL: \"SYS:Expansion\" 442 20")
+        (run "Assign Apps: SYS:Apps")
+        (set #startup-commands (cat #startup-commands "\nAssign Apps: SYS:Apps"))
+    ))
+
+    (if (<> 2 (exists "Work:" (noreq)))
+    (
+        (makedir (tackon @default-dest "Work") (infos))
+        (run "IconPos >NIL: \"SYS:Work\" 356 38")
+        (run "IconPos >NIL: \"SYS:Expansion\" 442 20")
+        (run "Assign Work: SYS:Work")
+        (set #startup-commands (cat #startup-commands "\nAssign Work: SYS:Work"))
+    ))
+
+    (p_startup "System" #startup-commands)
+    (p_amiget "util/arc/lha.run")
 ))
